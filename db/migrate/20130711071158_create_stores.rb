@@ -4,7 +4,10 @@ class CreateStores < ActiveRecord::Migration
     	t.integer  :user_id
       t.string :title
       t.text :description
+      # admin can clock it
       t.boolean :blocked, default: false
+      # owner can close it
+      t.boolean :closed, default: false
 
       t.timestamps
     end

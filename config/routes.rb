@@ -20,7 +20,7 @@ ViveStore::Application.routes.draw do
   resources :orders
 
 
-  resources :stores
+  resources :stores, except: [:destroy]
 
 
   resources :products

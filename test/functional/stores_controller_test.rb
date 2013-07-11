@@ -25,13 +25,14 @@ class StoresControllerTest < ActionController::TestCase
     @store = stores(:one)
   end
 
-  test "should get index" do
+  test "owner should get index" do
     get :index
     assert_response :success
     assert_not_nil assigns(:stores)
   end
 
-  test "should get new" do
+  # TODO: owner can own one store.
+  test "owner should get new" do
     get :new
     assert_response :success
   end
@@ -59,11 +60,5 @@ class StoresControllerTest < ActionController::TestCase
     assert_redirected_to store_path(assigns(:store))
   end
 
-  test "should destroy store" do
-    assert_difference('Store.count', -1) do
-      delete :destroy, id: @store
-    end
 
-    assert_redirected_to stores_path
-  end
 end
