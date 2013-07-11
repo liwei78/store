@@ -1,9 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
+  id: 1
+  title: 'Opening Store'
   description: MyText
+  blocked: false
+  user_id: 1
 
 two:
-  title: MyString
+  id: 2
+  title: 'Blocked Store'
   description: MyText
+  blocked: true
+  user_id: 2

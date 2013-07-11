@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  load_and_authorize_resource except: [:show]
   # GET /stores
   # GET /stores.json
   def index

@@ -19,6 +19,10 @@ class AddDeviseToUsers < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
+      # liwei
+      t.boolean  :owner, default: false
+      t.integer  :store_id
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at

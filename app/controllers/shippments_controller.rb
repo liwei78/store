@@ -1,4 +1,5 @@
 class ShippmentsController < ApplicationController
+  load_and_authorize_resource
   # GET /shippments
   # GET /shippments.json
   def index

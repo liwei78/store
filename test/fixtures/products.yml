@@ -1,9 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
+  id: 1
+  title: 'Product 1'
   description: MyText
+  user_id: 1
+  store_id: 1
 
 two:
-  title: MyString
+  id: 2
+  title: 'Product 2'
   description: MyText
+  user_id: 1
+  store_id: 1

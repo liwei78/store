@@ -1,9 +1,27 @@
 require 'test_helper'
 
+# every on can do
+class StoresControllerTest < ActionController::TestCase
+  test "everyone should get index" do
+    @store = stores(:one)
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:stores)
+  end
+
+  test "everyone should show store" do
+    @store = stores(:one)
+    get :show, id: @store
+    assert_response :success
+  end
+
+end
+
+# what a owner can do
 class StoresControllerTest < ActionController::TestCase
   setup do
-    @user = users(:one)
-    sign_in @user
+    @owner = users(:owner)
+    sign_in @owner
     @store = stores(:one)
   end
 

@@ -1,5 +1,32 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+owner:
+  id: 1
+  email: owner@123.com
+  encrypted_password: 123456
+  owner: true
+  store_id: 1
+
+store_user:
+  id: 2
   email: tom@123.com
   encrypted_password: 123456
+  owner: false
+  store_id: 1
+
+other_store_user:
+  id: 3
+  email: jerry@123.com
+  encrypted_password: 123456
+  owner: false
+  store_id: 2
+
+no_store_user:
+  id: 4
+  email: mickey@123.com
+  encrypted_password: 123456
+  owner: false
+  store_id: nil
+
+
+
