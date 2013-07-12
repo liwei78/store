@@ -75,3 +75,4 @@ class StoresControllerTest < ActionController::TestCase
   end
 
 end
+

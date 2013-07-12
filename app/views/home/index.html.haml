@@ -1,2 +1,37 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+.hero-unit
+  %h1
+    Welcome ViveStore
+  %p
+    This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+  %p
+    = link_to "Open Online Store", '', class: 'btn btn-primary btn-large'
+
+.row
+  .span4
+    %h2
+      BlackMilk
+    %p.image_intro
+      BlackMilk's simple custom template lets their incredibly creative legging designs take the spotlight.
+    %p.image_cover
+      = image_tag("sample0.jpg")
+    %p= link_to "view", '', class: 'btn'
+
+  .span4
+    %h2
+      Good as Gold
+    %p.image_intro
+      New Zealand’s premier online fashion boutique. This unique custom template begs visitors to click through by filling the screen with products.
+    %p.image_cover
+      = image_tag("sample1.jpg")
+    %p= link_to "view", '', class: 'btn'
+
+  .span4
+    %h2
+      So Worth Loving
+    %p.image_intro
+      Making unique clothing and accessories that make you feel loved. Take a peek at their custom template’s creative navigation bar.
+    %p.image_cover
+      = image_tag("sample2.jpg")
+    %p= link_to "view", '', class: 'btn'
+
+%hr

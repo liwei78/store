@@ -18,9 +18,9 @@
 
 
   %body
-    .navbar.navbar-fluid-top
+    .navbar.navbar-fixed-top
       .navbar-inner
-        .container-fluid
+        .container
           %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
             %span.icon-bar
             %span.icon-bar
@@ -31,11 +31,13 @@
               %li= link_to "Products", products_path
               %li= link_to "Cart", carts_path
               %li= link_to "out", destroy_user_session_path, method: :delete
+            %form.navbar-form.pull-right
+              = text_field_tag :email, '', class: 'span2', placeholder: 'Email'
+              = password_field_tag :email, '', class: 'span2', placeholder: 'Password'
+              = submit_tag :login, class: 'btn'
 
-    .container-fluid
-
-      .row-fluid
-        = yield
+    .container
+      = yield
     
       %footer
         %p &copy; Company 2013
