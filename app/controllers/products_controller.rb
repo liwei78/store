@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   load_and_authorize_resource except: [:show]
+  before_filter :authenticate_user!, except: [:show]
   # GET /products
   # GET /products.json
   def index

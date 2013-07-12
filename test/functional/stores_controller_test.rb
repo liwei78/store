@@ -3,7 +3,6 @@ require 'test_helper'
 # every on can do
 class StoresControllerTest < ActionController::TestCase
   test "everyone should get index" do
-    @store = stores(:one)
     get :index
     assert_response :success
     assert_not_nil assigns(:stores)
@@ -19,46 +18,60 @@ end
 
 # what a owner can do
 class StoresControllerTest < ActionController::TestCase
-  setup do
-    @owner = users(:owner)
-    sign_in @owner
-    @store = stores(:one)
-  end
 
-  test "owner should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:stores)
-  end
-
-  # TODO: owner can own one store.
+  # owner can not create a new again
   test "owner should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create store" do
-    assert_difference('Store.count') do
-      post :create, store: { description: @store.description, title: @store.title }
+    @user = users(:owner)
+    sign_in @user
+    assert_raise CanCan::AccessDenied do
+      get :new
     end
-
-    assert_redirected_to store_path(assigns(:store))
   end
 
-  test "should show store" do
-    get :show, id: @store
-    assert_response :success
+  test "owner should create store" do
+    @user = users(:owner)
+    sign_in @user
+    assert_raise CanCan::AccessDenied do
+      post :create, store: { description: 'some', title: 'some' }
+    end
   end
 
-  test "should get edit" do
+  test "owner should get edit" do
+    @user = users(:owner)
+    sign_in @user
+    @store = stores(:one)
     get :edit, id: @store
     assert_response :success
   end
 
-  test "should update store" do
-    put :update, id: @store, store: { description: @store.description, title: @store.title }
+  test "owner should update store" do
+    @user = users(:owner)
+    sign_in @user
+    @store = stores(:one)
+    put :update, id: @store, store: { description: 'test', title: 'test' }
     assert_redirected_to store_path(assigns(:store))
   end
 
+
+end
+
+# a new reg user can do
+class StoresControllerTest < ActionController::TestCase
+
+
+  test "new reg user should get new" do
+    @user = users(:new_reg_user)
+    sign_in @user
+    get :new
+    assert_response :success
+  end
+
+  test "new reg user create store" do
+    @user = users(:new_reg_user)
+    sign_in @user
+    assert_difference('Store.count') do
+      post :create, store: { description: 'some', title: 'some' }
+    end
+  end
 
 end

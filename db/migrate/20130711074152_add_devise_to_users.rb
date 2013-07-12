@@ -21,7 +21,7 @@ class AddDeviseToUsers < ActiveRecord::Migration
 
       # liwei
       t.boolean  :owner, default: false
-      t.integer  :store_id
+      t.integer  :store_id, default: 0
 
       ## Confirmable
       # t.string   :confirmation_token

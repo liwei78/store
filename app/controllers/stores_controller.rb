@@ -1,5 +1,6 @@
 class StoresController < ApplicationController
-  load_and_authorize_resource except: [:show]
+  load_and_authorize_resource except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show]
   # GET /stores
   # GET /stores.json
   def index

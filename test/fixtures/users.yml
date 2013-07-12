@@ -21,7 +21,7 @@ other_store_user:
   owner: false
   store_id: 2
 
-no_store_user:
+new_reg_user:
   id: 4
   email: mickey@123.com
   encrypted_password: 123456

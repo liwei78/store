@@ -11,3 +11,23 @@ Action Pack version       3.2.12
 Active Resource version   3.2.12
 Action Mailer version     3.2.12
 Active Support version    3.2.12
+
+
+Q:
+1. User A reg at Store.id = 1, user.store_id = 1. Then A can own a store ??
+NO. A is store user.
+but, IF A want to reg a account to Own store, but email be used. How ?
+......
+NO, A can own commission, place order, but not Owner account type.
+
+
+
+TODO:
+1. User can own one store.
+
+
+NOTE:
+1. set user.store_id default = 0
+2. test case, setup and teardown, will affect whole file. fuxxk.
+
+
