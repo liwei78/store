@@ -1,0 +1,12 @@
+settings: &settings
+  site_name: "ViveStore"
+  
+development:
+  <<: *settings
+  
+test:
+  <<: *settings
+  
+production:
+  <<: *settings
+

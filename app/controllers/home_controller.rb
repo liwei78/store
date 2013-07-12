@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def index
     respond_to do |format|
       format.html do
-        render layout: 'index_template'
+        render layout: 'fix_template'
       end
     end
     
@@ -13,4 +13,5 @@ class HomeController < ApplicationController
 
   def dashboard
   end
+
 end
