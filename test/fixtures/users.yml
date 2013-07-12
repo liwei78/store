@@ -28,5 +28,11 @@ new_reg_user:
   owner: false
   store_id: nil
 
+login_user:
+  id: 5
+  email: login@123.com
+  encrypted_password: 123456
+  owner: false
+  store_id: nil
 
 

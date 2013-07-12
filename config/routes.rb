@@ -7,10 +7,6 @@ ViveStore::Application.routes.draw do
   resources :users
 
 
-  get "home/login"
-
-  get "home/index"
-
   resources :carts
 
 
@@ -75,7 +71,8 @@ ViveStore::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  match 'home/dashboard' => 'home#dashboard', as: :dashboard
+  get '/home/board', to: 'home#board', as: :board
+  # get 'home/dashboard'
   root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"

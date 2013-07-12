@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     
   end
 
-  def dashboard
+  def board
   end
 
 end
