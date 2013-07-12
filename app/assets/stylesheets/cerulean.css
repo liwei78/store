@@ -6199,6 +6199,12 @@ a.badge:focus {
   text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
 }
 
+/* 2013-7-12 liwei */
+.navbar .navbar-text a {
+  color: #f5f5f5;
+  text-decoration: underline;
+}
+
 .navbar-inverse .navbar-search .search-query {
   color: #555555;
 }

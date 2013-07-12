@@ -36,8 +36,8 @@
                 = link_to "[logout]", destroy_user_session_path, method: :delete
             - else
               = form_tag('/users/sign_in', class: 'navbar-form pull-right') do
-                = email_field_tag :email, '', class: 'span2', placeholder: 'Email'
-                = password_field_tag :password, '', class: 'span2', placeholder: 'Password'
+                = email_field_tag 'user[email]', '', class: 'span2', placeholder: 'Email'
+                = password_field_tag 'user[password]', '', class: 'span2', placeholder: 'Password'
                 = submit_tag :login, class: 'btn'
 
     .container-fluid
