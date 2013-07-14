@@ -1,0 +1,23 @@
+.span3
+  .well.sidebar-nav
+    %ul.nav.nav-list
+      %li.nav-header Sidebar
+      %li= link_to "My Orders", orders_path
+      %li= link_to "My Shippments", shippments_path
+      %li= link_to "My Payments", payments_path
+      %li= link_to "Settings", ""
+.span9
+  = bootstrap_flash
+  - if flash['notice'].present?
+    .notice
+      = flash['notice']
+  - if flash['alert'].present?
+    .alert
+      = flash['alert']
+  .hero-unit
+  %h1
+    Welcome ViveStore
+  %p
+    This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+  %p
+    = link_to "Create Online Store", new_user_registration_path, class: 'btn btn-primary btn-large'

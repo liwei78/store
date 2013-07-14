@@ -32,7 +32,7 @@ class StoresControllerTest < ActionController::TestCase
     @user = users(:owner)
     sign_in @user
     assert_raise CanCan::AccessDenied do
-      post :create, store: { description: 'some', title: 'some' }
+      post :create, store: { description: 'some', title: 'some', permalink: 'some' }
     end
   end
 
@@ -48,8 +48,8 @@ class StoresControllerTest < ActionController::TestCase
     @user = users(:owner)
     sign_in @user
     @store = stores(:one)
-    put :update, id: @store, store: { description: 'test', title: 'test' }
-    assert_redirected_to store_path(assigns(:store))
+    put :update, id: @store, store: { description: 'test', title: 'test', permalink: 'test' }
+    assert_redirected_to store_path(assigns(:store).permalink)
   end
 
 
@@ -58,6 +58,7 @@ end
 # a new reg user can do
 class StoresControllerTest < ActionController::TestCase
 
+  include Devise::TestHelpers
 
   test "new reg user should get new" do
     @user = users(:new_reg_user)
@@ -67,11 +68,14 @@ class StoresControllerTest < ActionController::TestCase
   end
 
   test "new reg user create store" do
+    @request.env["devise.mapping"] = Devise.mappings[:user]
     @user = users(:new_reg_user)
     sign_in @user
     assert_difference('Store.count') do
-      post :create, store: { description: 'some', title: 'some' }
+      post :create, store: { description: 'some', title: 'some', permalink: 'some' }
     end
+    store = Store.last
+    assert_equal store.user_id, @user.id
   end
 
 end

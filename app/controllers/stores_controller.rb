@@ -15,7 +15,7 @@ class StoresController < ApplicationController
   # GET /stores/1
   # GET /stores/1.json
   def show
-    @store = Store.find(params[:id])
+    @store = Store.find_by_id(params[:id])||Store.find_by_permalink(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,28 +29,33 @@ class StoresController < ApplicationController
     @store = Store.new
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @store }
+      format.html { render layout: 'fix_template'}
     end
   end
 
   # GET /stores/1/edit
   def edit
     @store = Store.find(params[:id])
+    respond_to do |format|
+      format.html { render layout: 'fix_template'}
+    end
   end
 
   # POST /stores
   # POST /stores.json
   def create
     @store = Store.new(params[:store])
-
+    # TODO: er............I like session[:user_id]
+    # @store.user_id = current_user.id
     respond_to do |format|
       if @store.save
-        format.html { redirect_to @store, notice: 'Store was successfully created.' }
-        format.json { render json: @store, status: :created, location: @store }
+
+        @store.update_attribute(:user_id, current_user.id)
+        current_user.update_attributes(owner: true, store_id: @store.id)
+
+        format.html { redirect_to store_path(@store.permalink), notice: 'Store was successfully created.' }
       else
-        format.html { render action: "new" }
-        format.json { render json: @store.errors, status: :unprocessable_entity }
+        format.html { render action: "new", layout: 'fix_template' }
       end
     end
   end
@@ -62,10 +67,10 @@ class StoresController < ApplicationController
 
     respond_to do |format|
       if @store.update_attributes(params[:store])
-        format.html { redirect_to @store, notice: 'Store was successfully updated.' }
+        format.html { redirect_to store_path(@store.permalink), notice: 'Store was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "edit", layout: 'fix_template' }
         format.json { render json: @store.errors, status: :unprocessable_entity }
       end
     end

@@ -4,6 +4,7 @@ one:
   id: 1
   title: 'Opening Store'
   description: MyText
+  permalink: 'onestore'
   blocked: false
   closed: false
   user_id: 1
@@ -11,6 +12,7 @@ one:
 two:
   id: 2
   title: 'Blocked Store'
+  permalink: 'twostore'
   description: MyText
   blocked: true
   closed: false
