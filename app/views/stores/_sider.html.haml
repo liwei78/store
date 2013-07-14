@@ -1,0 +1,12 @@
+.span3
+  .well.sidebar-nav
+    %ul.nav.nav-list
+      %li= link_to "Home Page", store_path(@store)
+      %li= link_to "Store Products", store_products_path(@store.permalink)
+      %li= link_to "Story", story_store_path(@store.permalink)
+      
+      - if @store.id == current_user.store_id and current_user.owner?
+        %li.nav-header Management
+        %li= link_to 'Store List', stores_path
+        %li= link_to 'Edit', edit_store_path(@store)
+        %li= link_to 'Destroy', store_path(@store), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }

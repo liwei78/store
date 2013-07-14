@@ -1,13 +1,14 @@
 class ProductsController < ApplicationController
   load_and_authorize_resource except: [:show]
   before_filter :authenticate_user!, except: [:show]
+  before_filter :find_store
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = @store.products
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { render layout: 'fix_template'}
       format.json { render json: @products }
     end
   end
@@ -15,7 +16,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
+    @product = @store.products.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +27,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   # GET /products/new.json
   def new
-    @product = Product.new
+    @product = @store.products.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,17 +37,17 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-    @product = Product.find(params[:id])
+    @product = @store.products.find(params[:id])
   end
 
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(params[:product])
+    @product = @store.products.new(params[:product])
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to store_product_path(@store, @product), notice: 'Product was successfully created.' }
         format.json { render json: @product, status: :created, location: @product }
       else
         format.html { render action: "new" }
@@ -58,11 +59,11 @@ class ProductsController < ApplicationController
   # PUT /products/1
   # PUT /products/1.json
   def update
-    @product = Product.find(params[:id])
+    @product = @store.products.find(params[:id])
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to store_product_path(@store, @product), notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -74,7 +75,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product = Product.find(params[:id])
+    @product = @store.products.find(params[:id])
     @product.destroy
 
     respond_to do |format|
@@ -82,4 +83,19 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def add_cart
+    @product = @store.products.find(params[:id])
+    current_user.cart_products << @product
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  private
+
+  def find_store
+    @store = Store.find_by_id(params[:store_id])||Store.find_by_permalink(params[:store_id])
+  end
+
 end

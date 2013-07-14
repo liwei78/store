@@ -28,8 +28,8 @@
           = link_to "ViveStore", root_path, class: 'brand'
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Products", products_path
-              %li= link_to "Cart", carts_path
+              %li= link_to "Products", store_products_path(@store) if @store.present?
+              %li= link_to "Cart", user_carts_path(current_user) if user_signed_in?
             - if user_signed_in?
               %p.navbar-text.pull-right
                 Welcome back
@@ -39,7 +39,7 @@
                 = link_to "Dashboard", dashboard_users_path
                 = nbsp
                 - if current_user.owner? and current_user.store_id.present?
-                  = link_to "My Store", store_path(current_user.store_id)
+                  = link_to "My Store", store_path(current_user.store.permalink)
                   = nbsp
                 = link_to "[logout]", destroy_user_session_path, method: :delete
             - else

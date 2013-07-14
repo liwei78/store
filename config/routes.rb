@@ -1,9 +1,12 @@
 ViveStore::Application.routes.draw do
+
   devise_for :users
+
   resources :users do
     collection do
       get 'dashboard'
     end
+    resources :carts
   end
 
   resources :shippments
@@ -12,8 +15,6 @@ ViveStore::Application.routes.draw do
   resources :users
 
 
-  resources :carts
-
 
   resources :payments
 
@@ -21,10 +22,19 @@ ViveStore::Application.routes.draw do
   resources :orders
 
 
-  resources :stores, except: [:destroy]
+  resources :stores, except: [:destroy] do
+    resources :products do
+      member do
+        post 'add_cart'
+      end
+    end
+    member do
+      get 'story'
+    end
+  end
 
 
-  resources :products
+  
 
 
   # The priority is based upon order of creation:

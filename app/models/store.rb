@@ -3,4 +3,5 @@ class Store < ActiveRecord::Base
   validates :title, :permalink, presence: true
 
   belongs_to :user
+  has_many :products
 end

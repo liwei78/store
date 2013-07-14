@@ -1,1 +1,20 @@
-aa
+= render partial: 'sider'
+.span9
+  - if current_user.owner? and current_user.store_id.present?
+    - 2.times do 
+      .row-fluid(style="min-height: 200px;")
+        - 3.times do
+          .span4
+            %h2
+              How to Sell Products
+            %p
+              Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. 
+  - else
+    .hero-unit
+      %h1
+        Welcome ViveStore
+      %p
+        This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+      %p
+        = link_to "Create Online Store", new_store_path, class: 'btn btn-primary btn-large'
+    

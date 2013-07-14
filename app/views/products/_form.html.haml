@@ -1,4 +1,5 @@
-= form_for @product, :html => { :class => 'form-horizontal' } do |f|
+= form_for @product, url: store_products_path(@store), :html => { :class => 'form-horizontal' } do |f|
+  = f.hidden_field :store_id
   .control-group
     = f.label :title, :class => 'control-label'
     .controls
