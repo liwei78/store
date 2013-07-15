@@ -43,6 +43,7 @@ gem 'haml-rails'
 gem 'devise'
 gem 'cancan'
 
+# http://railsapps.github.io/tutorial-rails-devise-rspec-cucumber.html
 gem 'rspec-rails', :group => [:development, :test]
 gem "factory_girl_rails", :group => [:development, :test]
 gem "database_cleaner", :group => :test

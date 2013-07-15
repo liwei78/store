@@ -10,7 +10,7 @@ class StoresControllerTest < ActionController::TestCase
 
   test "everyone should show store" do
     @store = stores(:one)
-    get :show, id: @store
+    get :show, id: @store.id
     assert_response :success
   end
 
@@ -18,6 +18,10 @@ end
 
 # what a owner can do
 class StoresControllerTest < ActionController::TestCase
+
+  setup do
+    request.env["devise.mapping"] = Devise.mappings[:user]
+  end
 
   # owner can not create a new again
   test "owner should get new" do

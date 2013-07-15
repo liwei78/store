@@ -5,7 +5,7 @@
       %li= link_to "Store Products", store_products_path(@store.permalink)
       %li= link_to "Story", story_store_path(@store.permalink)
       
-      - if @store.id == current_user.store_id and current_user.owner?
+      - if can? :manage, Store
         %li.nav-header Management
         %li= link_to 'Store List', stores_path
         %li= link_to 'Edit', edit_store_path(@store)
