@@ -12,12 +12,12 @@
   %tbody
     - @payments.each do |payment|
       %tr
-        %td= link_to payment.id, payment_path(payment)
+        %td= link_to payment.id, admin_payment_path(payment)
         %td= payment.number
         %td= payment.amount
         %td=l payment.created_at
         %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_payment_path(payment), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), payment_path(payment), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+          = link_to t('.edit', :default => t("helpers.links.edit")), edit_admin_payment_path(payment), :class => 'btn btn-mini'
+          = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_payment_path(payment), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
 
-= link_to t('.new', :default => t("helpers.links.new")), new_payment_path, :class => 'btn btn-primary'
+= link_to t('.new', :default => t("helpers.links.new")), new_admin_payment_path, :class => 'btn btn-primary'

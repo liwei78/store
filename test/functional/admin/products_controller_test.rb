@@ -47,6 +47,6 @@ class Admin::ProductsControllerTest < ActionController::TestCase
       delete :destroy, id: @product
     end
 
-    assert_redirected_to admin_products_path(@store)
+    assert_redirected_to admin_products_path
   end
 end

@@ -23,7 +23,7 @@ class Admin::PaymentsControllerTest < ActionController::TestCase
       post :create, payment: { amount: @payment.amount, number: @payment.number }
     end
 
-    assert_redirected_to payment_path(assigns(:payment))
+    assert_redirected_to admin_payment_path(assigns(:payment))
   end
 
   test "should show payment" do
@@ -37,8 +37,8 @@ class Admin::PaymentsControllerTest < ActionController::TestCase
   end
 
   test "should update payment" do
-    put :update, id: @payment, payment: { amount: @payment.amount, number: @payment.number }
-    assert_redirected_to payment_path(assigns(:payment))
+    put :update, id: @payment, payment: { amount: 88.00, number: '112233' }
+    assert_redirected_to admin_payment_path(assigns(:payment))
   end
 
   test "should destroy payment" do
@@ -46,6 +46,6 @@ class Admin::PaymentsControllerTest < ActionController::TestCase
       delete :destroy, id: @payment
     end
 
-    assert_redirected_to payments_path
+    assert_redirected_to admin_payments_path
   end
 end

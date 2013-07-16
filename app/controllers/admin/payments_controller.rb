@@ -19,7 +19,6 @@ class Admin::PaymentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @payment }
     end
   end
 
@@ -30,7 +29,6 @@ class Admin::PaymentsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @payment }
     end
   end
 
@@ -46,11 +44,9 @@ class Admin::PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.save
-        format.html { redirect_to @payment, notice: 'Payment was successfully created.' }
-        format.json { render json: @payment, status: :created, location: @payment }
+        format.html { redirect_to admin_payment_path(@payment), notice: 'Payment was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,11 +58,9 @@ class Admin::PaymentsController < ApplicationController
 
     respond_to do |format|
       if @payment.update_attributes(params[:payment])
-        format.html { redirect_to @payment, notice: 'Payment was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to admin_payment_path(@payment), notice: 'Payment was successfully updated.' }
       else
         format.html { render action: "edit" }
-        format.json { render json: @payment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -78,8 +72,7 @@ class Admin::PaymentsController < ApplicationController
     @payment.destroy
 
     respond_to do |format|
-      format.html { redirect_to payments_url }
-      format.json { head :no_content }
+      format.html { redirect_to admin_payments_url }
     end
   end
 end
