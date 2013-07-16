@@ -22,7 +22,7 @@ ViveStore::Application.routes.draw do
   resources :orders
 
 
-  resources :stores, except: [:destroy] do
+  resources :stores, except: [:index, :destroy] do
     resources :products do
       member do
         post 'add_cart'

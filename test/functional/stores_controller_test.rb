@@ -20,7 +20,7 @@ end
 class StoresControllerTest < ActionController::TestCase
 
   setup do
-    request.env["devise.mapping"] = Devise.mappings[:user]
+    # request.env["devise.mapping"] = Devise.mappings[:user]
   end
 
   # owner can not create a new again
