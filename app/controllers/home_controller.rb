@@ -1,6 +1,4 @@
 class HomeController < ApplicationController
-  load_and_authorize_resource except: [:index]
-  before_filter :authenticate_user!, except: [:index]
 
   def index
     respond_to do |format|
@@ -9,9 +7,6 @@ class HomeController < ApplicationController
       end
     end
     
-  end
-
-  def board
   end
 
 end

@@ -9,7 +9,6 @@ ViveStore::Application.routes.draw do
     resources :carts
   end
 
-  resources :users
 
   resources :stores, except: [:index, :destroy] do
     resources :products do
@@ -66,7 +65,8 @@ ViveStore::Application.routes.draw do
   namespace :admin do
     # Directs /admin/products/* to Admin::ProductsController
     # (app/controllers/admin/products_controller.rb)
-    get '/admin/dashboard', to: 'home#board', as: :board
+    get '' => 'home#index', as: :home
+    resources :reports
     resources :products
     resources :orders
     resources :shippments
@@ -75,7 +75,6 @@ ViveStore::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  get '/home/board', to: 'home#board', as: :board
   # get 'home/dashboard'
   root :to => 'home#index'
 

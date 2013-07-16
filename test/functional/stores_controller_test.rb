@@ -72,7 +72,7 @@ class StoresControllerTest < ActionController::TestCase
     @user = users(:new_reg_user)
     sign_in @user
     assert_difference('Store.count') do
-      post :create, store: { description: 'some', title: 'some', permalink: 'some' }
+      post :create, store: { description: 'some', title: 'some', permalink: 'some', subdomain: 'test-domain' }
     end
     store = Store.last
     assert_equal store.user_id, @user.id

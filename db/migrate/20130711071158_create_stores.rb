@@ -5,6 +5,7 @@ class CreateStores < ActiveRecord::Migration
       t.string   :title
       t.text     :description
       t.string   :permalink
+      t.string   :subdomain
       # admin can clock it
       t.boolean  :blocked, default: false
       # owner can close it

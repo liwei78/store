@@ -47,8 +47,10 @@ class Ability
       resource.store_id = user.store_id
     end
 
-    can [:index, :read], Store
+    can [:read], Store
 
+    can :manage, Report
+    can :manage, Home
     #
     # The first argument to `can` is the action you are giving the user permission to do.
     # If you pass :manage it will apply to every action. Other common actions here are
