@@ -2,11 +2,6 @@ require 'test_helper'
 
 # every on can do
 class StoresControllerTest < ActionController::TestCase
-  test "everyone should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:stores)
-  end
 
   test "everyone should show store" do
     @store = stores(:one)
@@ -20,6 +15,7 @@ end
 class StoresControllerTest < ActionController::TestCase
 
   setup do
+    # NOTE: it's not necessary ????????? whyyyy????
     # request.env["devise.mapping"] = Devise.mappings[:user]
   end
 

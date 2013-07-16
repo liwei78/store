@@ -2,8 +2,10 @@
   .well.sidebar-nav
     %ul.nav.nav-list
       %li= link_to "Home Page", store_path(@store)
-      %li= link_to "Store Products", store_products_path(@store.permalink)
+      %li= link_to "Products List", store_products_path(@store.permalink)
       %li= link_to "Story", story_store_path(@store.permalink)
+      %li= link_to "About", story_store_path(@store.permalink)
+      %li= link_to "Contact", story_store_path(@store.permalink)
       
       - if can? :manage, Store
         %li.nav-header Management

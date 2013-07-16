@@ -1,4 +1,4 @@
-class ShippmentsController < ApplicationController
+class Admin::ShippmentsController < ApplicationController
   load_and_authorize_resource
   before_filter :authenticate_user!
   # GET /shippments
@@ -8,7 +8,6 @@ class ShippmentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @shippments }
     end
   end
 
@@ -19,7 +18,6 @@ class ShippmentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @shippment }
     end
   end
 
@@ -30,7 +28,6 @@ class ShippmentsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @shippment }
     end
   end
 
@@ -46,11 +43,9 @@ class ShippmentsController < ApplicationController
 
     respond_to do |format|
       if @shippment.save
-        format.html { redirect_to @shippment, notice: 'Shippment was successfully created.' }
-        format.json { render json: @shippment, status: :created, location: @shippment }
+        format.html { redirect_to admin_shippment_path(@shippment), notice: 'Shippment was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @shippment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -62,11 +57,9 @@ class ShippmentsController < ApplicationController
 
     respond_to do |format|
       if @shippment.update_attributes(params[:shippment])
-        format.html { redirect_to @shippment, notice: 'Shippment was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to admin_shippment_path(@shippment), notice: 'Shippment was successfully updated.' }
       else
         format.html { render action: "edit" }
-        format.json { render json: @shippment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -78,8 +71,7 @@ class ShippmentsController < ApplicationController
     @shippment.destroy
 
     respond_to do |format|
-      format.html { redirect_to shippments_url }
-      format.json { head :no_content }
+      format.html { redirect_to admin_shippments_url }
     end
   end
 end

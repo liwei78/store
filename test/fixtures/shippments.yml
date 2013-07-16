@@ -1,12 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  id: 1
   store_id: 1
   user_id: 2
   order_id: 1
   number: 'NO 001 S'
 
 two:
+  id: 2
   store_id: 1
   user_id: 2
   order_id: 2

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class OrdersControllerTest < ActionController::TestCase
+class Admin::OrdersControllerTest < ActionController::TestCase
   setup do
     @order = orders(:one)
     @owner = users(:owner)
@@ -23,7 +23,7 @@ class OrdersControllerTest < ActionController::TestCase
       post :create, order: { amount: @order.amount, number: @order.number }
     end
 
-    assert_redirected_to order_path(assigns(:order))
+    assert_redirected_to admin_order_path(assigns(:order))
   end
 
   test "should show order" do
@@ -38,7 +38,7 @@ class OrdersControllerTest < ActionController::TestCase
 
   test "should update order" do
     put :update, id: @order, order: { amount: @order.amount, number: @order.number }
-    assert_redirected_to order_path(assigns(:order))
+    assert_redirected_to admin_order_path(assigns(:order))
   end
 
   test "should destroy order" do
@@ -46,6 +46,6 @@ class OrdersControllerTest < ActionController::TestCase
       delete :destroy, id: @order
     end
 
-    assert_redirected_to orders_path
+    assert_redirected_to admin_orders_path
   end
 end

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PaymentsControllerTest < ActionController::TestCase
+class Admin::PaymentsControllerTest < ActionController::TestCase
   setup do
     @payment = payments(:one)
     @owner = users(:owner)

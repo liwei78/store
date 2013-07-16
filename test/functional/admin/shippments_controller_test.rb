@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ShippmentsControllerTest < ActionController::TestCase
+class Admin::ShippmentsControllerTest < ActionController::TestCase
   setup do
     @shippment = shippments(:one)
     @owner = users(:owner)
@@ -20,10 +20,10 @@ class ShippmentsControllerTest < ActionController::TestCase
 
   test "should create shippment" do
     assert_difference('Shippment.count') do
-      post :create, shippment: { number: @shippment.number }
+      post :create, shippment: { number: '00000' }
     end
 
-    assert_redirected_to shippment_path(assigns(:shippment))
+    assert_redirected_to admin_shippment_path(assigns(:shippment))
   end
 
   test "should show shippment" do
@@ -37,8 +37,10 @@ class ShippmentsControllerTest < ActionController::TestCase
   end
 
   test "should update shippment" do
-    put :update, id: @shippment, shippment: { number: @shippment.number }
-    assert_redirected_to shippment_path(assigns(:shippment))
+    put :update, id: @shippment, shippment: { number: '111222' }
+    @shippment.reload
+    assert_equal @shippment.number, '111222'
+    assert_redirected_to admin_shippment_path(assigns(:shippment))
   end
 
   test "should destroy shippment" do
@@ -46,6 +48,6 @@ class ShippmentsControllerTest < ActionController::TestCase
       delete :destroy, id: @shippment
     end
 
-    assert_redirected_to shippments_path
+    assert_redirected_to admin_shippments_path
   end
 end
