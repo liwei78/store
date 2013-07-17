@@ -32,7 +32,7 @@ class Admin::StoresControllerTest < ActionController::TestCase
     @user = users(:owner)
     sign_in @user
     assert_raise CanCan::AccessDenied do
-      post :create, store: { description: 'some', title: 'some', permalink: 'some' }
+      post :create, store: { description: 'some', title: 'some', subdomain: 'some' }
     end
   end
 
@@ -48,8 +48,8 @@ class Admin::StoresControllerTest < ActionController::TestCase
     @user = users(:owner)
     sign_in @user
     @store = stores(:one)
-    put :update, id: @store, store: { description: 'test', title: 'test', permalink: 'test' }
-    assert_redirected_to admin_store_path(assigns(:store).permalink)
+    put :update, id: @store, store: { description: 'test', title: 'test', subdomain: 'test' }
+    assert_redirected_to admin_store_path(assigns(:store))
   end
 
 
@@ -72,7 +72,7 @@ class Admin::StoresControllerTest < ActionController::TestCase
     @user = users(:new_reg_user)
     sign_in @user
     assert_difference('Store.count') do
-      post :create, store: { description: 'some', title: 'some', permalink: 'some', subdomain: 'test-domain' }
+      post :create, store: { description: 'some', title: 'some', subdomain: 'some', subdomain: 'test-domain' }
     end
     store = Store.last
     assert_equal store.user_id, @user.id

@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(:version => 20130711074152) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "description"
-    t.string   "permalink"
     t.string   "subdomain"
     t.boolean  "blocked",     :default => false
     t.boolean  "closed",      :default => false

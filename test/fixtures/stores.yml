@@ -4,7 +4,6 @@ one:
   id: 1
   title: 'Opening Store'
   description: MyText
-  permalink: 'onestore'
   subdomain: 'one-store'
   blocked: false
   closed: false
@@ -13,7 +12,6 @@ one:
 two:
   id: 2
   title: 'Blocked Store'
-  permalink: 'twostore'
   subdomain: 'two-store'
   description: MyText
   blocked: true

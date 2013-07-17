@@ -5,7 +5,7 @@
       
       %h1
         =t @store.title
-        = link_to "View My Store", store_path(@store), class: 'btn btn-info', target: '_blank'
+        = link_to "View My Store", root_url(subdomain: @store.subdomain), class: 'btn btn-info', target: '_blank'
 
     %p
       %strong description

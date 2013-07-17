@@ -71,6 +71,8 @@ ViveStore::Application.routes.draw do
     resources :stores, except: [:index]
   end
 
+  match '', to: 'stores#show', constraints: lambda { |r| r.subdomain.present? && r.subdomain != 'www' }
+
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # get 'home/dashboard'
@@ -81,4 +83,5 @@ ViveStore::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
 end

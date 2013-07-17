@@ -4,7 +4,6 @@ class CreateStores < ActiveRecord::Migration
     	t.integer  :user_id
       t.string   :title
       t.text     :description
-      t.string   :permalink
       t.string   :subdomain
       # admin can clock it
       t.boolean  :blocked, default: false
