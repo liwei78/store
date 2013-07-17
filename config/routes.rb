@@ -7,7 +7,7 @@ ViveStore::Application.routes.draw do
   end
 
 
-  resources :stores, except: [:index, :destroy] do
+  resources :stores, only: [:show] do
     resources :products do
       member do
         post 'add_cart'
@@ -68,7 +68,7 @@ ViveStore::Application.routes.draw do
     resources :orders
     resources :shippments
     resources :payments
-    resources :stores
+    resources :stores, except: [:index]
   end
 
   # You can have the root of your site routed with "root"

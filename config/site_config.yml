@@ -1,9 +1,9 @@
 settings: &settings
   site_name: "ViveStore"
+  domain: 'store.com'
   enable_subdomain: true
   
 development:
-  domain: 'store.com'
   <<: *settings
   
 test:

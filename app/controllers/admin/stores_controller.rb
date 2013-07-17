@@ -2,6 +2,8 @@ class Admin::StoresController < ApplicationController
   load_and_authorize_resource except: [:show]
   before_filter :authenticate_user!, except: [:show]
 
+  layout 'admin'
+
   # GET /stores/1
   # GET /stores/1.json
   def show
@@ -17,10 +19,6 @@ class Admin::StoresController < ApplicationController
   # GET /stores/new.json
   def new
     @store = Store.new
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   # GET /stores/1/edit
@@ -43,9 +41,9 @@ class Admin::StoresController < ApplicationController
         @store.update_attribute(:user_id, current_user.id)
         current_user.update_attributes(owner: true, store_id: @store.id)
 
-        format.html { redirect_to store_path(@store.permalink), notice: 'Store was successfully created.' }
+        format.html { redirect_to admin_store_path(@store), notice: 'Store was successfully created.' }
       else
-        format.html { render action: "new", layout: 'fix_template' }
+        format.html { render action: "new"}
       end
     end
   end
@@ -57,11 +55,9 @@ class Admin::StoresController < ApplicationController
 
     respond_to do |format|
       if @store.update_attributes(params[:store])
-        format.html { redirect_to store_path(@store.permalink), notice: 'Store was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to admin_store_path(@store), notice: 'Store was successfully updated.' }
       else
-        format.html { render action: "edit", layout: 'fix_template' }
-        format.json { render json: @store.errors, status: :unprocessable_entity }
+        format.html { render action: "edit" }
       end
     end
   end

@@ -1,7 +1,7 @@
 class Store < ActiveRecord::Base
-  attr_accessible :description, :title, :closed, :permalink, :user_id, :subdomain
+  attr_accessible :description, :title, :closed, :user_id, :subdomain
   
-  validates :title, :permalink, :subdomain, presence: true
+  validates :title, :subdomain, presence: true
   validates :subdomain, uniqueness: true
 
   validates :subdomain, :format => { :with => /\A[a-zA-Z0-9-]+\z/, :message => "Only letters and '-' allowed" }

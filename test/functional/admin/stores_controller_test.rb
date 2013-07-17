@@ -1,7 +1,7 @@
 require 'test_helper'
 
 # every on can do
-class StoresControllerTest < ActionController::TestCase
+class Admin::StoresControllerTest < ActionController::TestCase
 
   test "everyone should show store" do
     @store = stores(:one)
@@ -12,7 +12,7 @@ class StoresControllerTest < ActionController::TestCase
 end
 
 # what a owner can do
-class StoresControllerTest < ActionController::TestCase
+class Admin::StoresControllerTest < ActionController::TestCase
 
   setup do
     # NOTE: it's not necessary ????????? whyyyy????
@@ -49,14 +49,14 @@ class StoresControllerTest < ActionController::TestCase
     sign_in @user
     @store = stores(:one)
     put :update, id: @store, store: { description: 'test', title: 'test', permalink: 'test' }
-    assert_redirected_to store_path(assigns(:store).permalink)
+    assert_redirected_to admin_store_path(assigns(:store).permalink)
   end
 
 
 end
 
 # a new reg user can do
-class StoresControllerTest < ActionController::TestCase
+class Admin::StoresControllerTest < ActionController::TestCase
 
   include Devise::TestHelpers
 

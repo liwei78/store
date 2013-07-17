@@ -14,6 +14,9 @@
       %li= link_to "Comunities", ''
       
       %li.nav-header Settings
-      %li= link_to 'Store Profile', admin_store_path(@store) if @store.present?
+      -  if @store.present? and !@store.new_record?
+        %li
+          = link_to 'edit', edit_admin_store_path(@store), class: 'pull-right'
+          = link_to 'Store Profile', admin_store_path(@store)
       %li= link_to 'Story', ''
       %li= link_to 'Subdomain', ''

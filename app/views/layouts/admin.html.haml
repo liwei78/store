@@ -41,7 +41,7 @@
                 = link_to "Dashboard", admin_home_path
                 = nbsp
                 - if current_user.owner? and current_user.store_id.present?
-                  = link_to "My Store", store_path(current_user.store.permalink)
+                  = link_to "My Store", admin_store_path(current_user.store_id)
                   = nbsp
                 = link_to "[logout]", destroy_user_session_path, method: :delete
             - else

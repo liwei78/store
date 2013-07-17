@@ -1,4 +1,5 @@
-- model_class = Store
-.page-header
-  %h1=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human.titleize
-= render :partial => "form"
+= render partial: 'admin/sider'
+.span9
+  .page-header
+    %h1= 'Create a Store'
+  = render :partial => "form"
