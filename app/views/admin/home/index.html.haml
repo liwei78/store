@@ -1,1 +1,21 @@
-a
+= render partial: 'admin/sider'
+.span9
+
+  = bootstrap_flash
+  - if flash['notice'].present?
+    .notice
+      = flash['notice']
+  - if flash['alert'].present?
+    .alert
+      = flash['alert']
+  .hero-unit
+    %h1
+      Welcome ViveStore
+    %p
+      This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+    - if @store.present?
+      %p
+        = link_to "Config Your Store", admin_store_path(@store), class: 'btn btn-primary btn-large'
+    - else
+      %p
+        = link_to "Create Your Store", new_admin_store_path, class: 'btn btn-primary btn-large'

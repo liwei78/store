@@ -28,8 +28,10 @@
           = link_to "ViveStore", root_path, class: 'brand'
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Products", store_products_path(@store) if @store.present?
-              %li= link_to "Cart", user_carts_path(current_user) if user_signed_in?
+              %li= link_to "FIXTURES", '#'
+              %li= link_to "EXAMPLES", '#'
+              %li= link_to "PRICING", '#'
+              %li= link_to "BLOG", '#'
             - if user_signed_in?
               %p.navbar-text.pull-right
                 Welcome back

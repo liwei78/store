@@ -1,0 +1,19 @@
+.span3
+  .well.sidebar-nav
+    %ul.nav.nav-list
+
+      %li.nav-header Management
+      %li= link_to "Home Page", admin_home_path
+      %li= link_to "Products", ''
+      %li= link_to "Orders", ''
+      %li= link_to "Shippments", ''
+      %li= link_to "Payments", ''
+
+      %li.nav-header Active
+      %li= link_to "Users", ''
+      %li= link_to "Comunities", ''
+      
+      %li.nav-header Settings
+      %li= link_to 'Store Profile', admin_store_path(@store) if @store.present?
+      %li= link_to 'Story', ''
+      %li= link_to 'Subdomain', ''

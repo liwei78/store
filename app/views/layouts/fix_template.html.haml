@@ -37,7 +37,7 @@
                 Welcome back
                 = current_user.email
                 = nbsp
-                = link_to "Dashboard", dashboard_users_path
+                = link_to "Dashboard", admin_home_path
                 = nbsp
                 - if current_user.owner? and current_user.store_id.present?
                   = link_to "My Store", store_path(current_user.store.permalink)

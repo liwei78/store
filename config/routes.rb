@@ -3,9 +3,6 @@ ViveStore::Application.routes.draw do
   devise_for :users
 
   resources :users do
-    collection do
-      get 'dashboard'
-    end
     resources :carts
   end
 
@@ -71,6 +68,7 @@ ViveStore::Application.routes.draw do
     resources :orders
     resources :shippments
     resources :payments
+    resources :stores
   end
 
   # You can have the root of your site routed with "root"
