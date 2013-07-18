@@ -9,4 +9,6 @@ class Store < ActiveRecord::Base
 
   belongs_to :user
   has_many :products
+
+  has_many :customers, class_name: 'User', source: :user, conditions: ["users.owner = ?", false]
 end

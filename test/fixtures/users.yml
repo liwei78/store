@@ -35,4 +35,18 @@ login_user:
   owner: false
   store_id: nil
 
+customer_1:
+  id: 6
+  email: c1@123.com
+  encrypted_password: 123456
+  owner: false
+  store_id: 1
+
+customer_2:
+  id: 7
+  email: c2@123.com
+  encrypted_password: 123456
+  owner: false
+  store_id: 1
+
 

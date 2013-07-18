@@ -14,6 +14,6 @@ class User < ActiveRecord::Base
   has_many :carts
   has_many :cart_products, through: :carts, source: :product
 
-
+  belongs_to :store
 
 end

@@ -66,4 +66,15 @@ class StoreTest < ActiveSupport::TestCase
     assert_equal store2.save, false
     assert_equal store2.errors[:subdomain], ["is too long (maximum is 20 characters)"]
   end
+
+  test "store have many customers" do
+    store = stores(:one)
+    customer_1 = users(:customer_1)
+    customer_2 = users(:customer_2)
+    assert !store.customers.empty?
+    assert store.customers.include?(customer_1)
+    assert store.customers.include?(customer_2)
+  end
+
+
 end

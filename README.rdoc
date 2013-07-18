@@ -23,10 +23,11 @@ NO, A can own commission, place order, but not Owner account type.
 
 
 TODO:
-1. User can own one store.
-2. Store enable/disable User register
-3. checkout
-4. subdomain and domain
+1. [x] User can own one store.
+2. [ ] Store enable/disable User register
+3. [ ] checkout
+4. [x] subdomain and domain
+5. [ ] user can place order
 
 
 NOTE:

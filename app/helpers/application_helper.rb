@@ -6,4 +6,5 @@ module ApplicationHelper
     _str += "&nbsp;"*(opt[:repeat]-1) if opt[:repeat] and opt[:repeat] > 1
     _str.html_safe
   end
+
 end
