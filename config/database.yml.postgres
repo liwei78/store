@@ -1,0 +1,20 @@
+base: &base
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: demo
+  password: demo
+  host: localhost
+  database: demo_pg
+  
+development:
+  <<: *base
+  
+test:
+  <<: *base
+
+slave:
+  <<: *base
+  
+production:
+  <<: *base
