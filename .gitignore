@@ -16,3 +16,4 @@
 Gemfile.lock
 /public/assets/**/*
 /doc/**/*
+config/database.yml
