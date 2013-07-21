@@ -2,10 +2,10 @@ base: &base
   adapter: postgresql
   encoding: unicode
   pool: 5
-  username: demo
-  password: demo
+  username: postgres
+  password: 
   host: localhost
-  database: demo_pg
+  database: store_dev
   
 development:
   <<: *base

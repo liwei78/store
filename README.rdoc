@@ -35,3 +35,11 @@ NOTE:
 2. test case, setup and teardown, will affect whole file. fuxxk.
 
 
+How to user postgres
+>su postgres
+>createuser liwei
+>vim /etc/postgresql/9.1/main/pg_hba.conf
+>su liwei
+>createdb store_dev
+>psql store_dev
+>GRANT ALL PRIVILEGES ON DATABASE store_dev to liwei;
