@@ -38,7 +38,7 @@ NOTE:
 How to user postgres
 >su postgres
 >createuser liwei
->vim /etc/postgresql/9.1/main/pg_hba.conf
+>vim /etc/postgresql/9.1/main/pg_hba.conf           # ubuntu
 >su liwei
 >createdb store_dev
 >psql store_dev
